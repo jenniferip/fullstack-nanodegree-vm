@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+	<div class='category_aside'>
+    	<aside>
+    		<h2>Categories</h2>
+    		{% for category in categories %}
+    			<div>
+        			<a href='{{url_for('showCategory', category_id = category.id)}}'>{{category.name}}</a>
+        		</div>
+        	{% endfor %}
+    	</aside>
+	</div>
+{% endblock %}

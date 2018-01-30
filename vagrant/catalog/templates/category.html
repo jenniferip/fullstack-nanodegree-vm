@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% include "aside.html" %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <div class='category'>
+        <h1>{{category.name}}</h1>
+        {% for item in category_items %}
+            <div>
+                <a href='{{url_for('showItem', category_id = category.id, item_id = item.id)}}'>{{item.title}}</a>
+            </div>
+        {% endfor %}
+        <a href='{{url_for('addItem', category_id = category.id)}}'>Add Item</a>
+    </div>
+{% endblock %}

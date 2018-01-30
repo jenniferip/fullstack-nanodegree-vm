@@ -1,0 +1,75 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% include "aside.html" %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Edit Item</h1>
+    <form action='#' method='post'>
+        <div>
+            <label for='title'>Title:</label>
+                <br>
+                <input type ='text' maxlength='250' name='title' placeholder='{{item.title}}'>
+        </div>
+        <br>
+
+        <div>
+            <label for='description'>Description:</label>
+                <br>
+                <textarea maxlength='250' name='description' placeholder='{{item.description}}'>{{item.description}}</textarea>
+        </div>
+        <br>
+
+        <div>
+            <label for='category'>Category:</label>
+                <br>
+                <div class='radio'>
+                    <label>
+                        <input type='radio' name='category' id='category1' value='Latin' {% if item.course == 'Latin'%}checked{%endif%}>Latin
+                    </label>
+                </div>
+                <div class='radio'>
+                    <label>
+                        <input type='radio' name='category' id='category2' value='Rap' {% if item.category == 'Rap'%}checked{%endif%}>Rap
+                    </label>
+                </div>
+                <div class='radio'>
+                    <label>
+                        <input type='radio' name='category' id='category3' value='Pop' {% if item.category == 'Pop'%}checked{%endif%}>Pop
+                    </label>
+                </div>
+                <div class='radio'>
+                    <label>
+                        <input type='radio' name='category' id='category4' value='Country' {% if item.category == 'Country'%}checked{%endif%}>Country
+                    </label>
+                </div>
+                <div class='radio'>
+                    <label>
+                        <input type='radio' name='category' id='category5' value='RnB' {% if item.category == 'RnB'%}checked{%endif%}>RnB
+                    </label>
+                </div>
+                <div class='radio'>
+                    <label>
+                        <input type='radio' name='category' id='category6' value='Rock'>Rock
+                    </label>
+                </div>
+                <div class='radio'>
+                    <label>
+                        <input type='radio' name='category' id='category7' value='Folk'>Folk
+                    </label>
+                </div>
+                <div class='radio'>
+                    <label>
+                        <input type='radio' name='category' id='category8' value='Soul'>Soul
+                    </label>
+                </div>
+        </div>
+    <button type='submit' id='submit' type='submit'>
+        <span aria-hidden='true'></span>Save</button>
+    </form>
+    <form action='{{url_for('showItem', category_id = item.category_id, item_id = item.id)}}' method='get'>
+        <button type='cancel' id='cancel' type='cancel'>
+            <span aria-hidden='true'></span>Cancel</button>
+    </form>
+{% endblock %}

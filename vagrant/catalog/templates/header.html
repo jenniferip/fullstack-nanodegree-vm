@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+	<header class='header'>
+		<div class='logincontainer'>
+    		{% if 'username' not in session %}
+    			<div class='loginlogout'>
+        			<a href="{{url_for('showLogin')}}">Log In</a>
+        		</div>
+    		{% else %}
+    			<div class='loginlogout'>
+        			<a href="{{url_for('gdisconnect')}}">Logout</a>
+        		</div>
+    		{% endif %}
+		</div>
+		<div class='gotomain'>
+			<a href='{{url_for('showCatalogMain')}}'>Go to Main</a>
+		</div>
+	</header>
+{% endblock %}

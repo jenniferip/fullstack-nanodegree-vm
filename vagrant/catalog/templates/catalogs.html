@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% include "aside.html" %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <div class='latest'>
+        <h2>Latest Items</h2>
+        {% for latest in latest_items %}
+            <div>
+                <a href='{{url_for('showItem', category_id = latest.category_id, item_id = latest.id)}}'>{{latest.title}}</a>
+            </div>
+        {% endfor %}
+        <a href='{{url_for('addItem', category_id = 1)}}'>Add Item</a>
+    </div>
+{% endblock %}

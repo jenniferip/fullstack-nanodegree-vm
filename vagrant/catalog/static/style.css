@@ -1,0 +1,30 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.header {
+    order: 1;
+}
+
+.loginlogout {
+    float: right;
+}
+
+.category_aside {
+    order: 2;
+    width: 30%;
+}
+
+.latest {
+    order: 3;
+    width: 70%;
+}

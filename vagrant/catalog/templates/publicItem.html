@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% include "aside.html" %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+    <div>
+        <h1>{{item.title}}</h1>
+        <p>{{item.description}}</p>
+        <footer>
+            <p>Created by: {{creator.name}}</p>
+        </footer>
+    </div>
+{% endblock %}
